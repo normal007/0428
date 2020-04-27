@@ -1,0 +1,300 @@
+1.IT行业基础
+a.常见的软件架构
+	微信           c/s   b/s
+	QQ             c/s
+	淘宝           c/s   b/s
+	LOL            c/s
+	美图           c/s   b/s
+	支付宝         c/s   b/s
+	百度地图       c/s   b/s
+	抖音、快手      c/s
+	腾讯视频       c/s   b/s
+	真三国无双     c/s  
+	a.单机软件
+		不需要网络就可以执行的应用程序
+		hackercon  
+		defcon
+	b.b/s架构软件
+		b: 浏览器
+			IE    		UC  猎豹  360  搜狗  世界之窗  傲游 
+			firefox     测试  
+			chrome      开发
+			safari      苹果
+		s: 服务器
+			性能特别牛逼的电脑
+		测试关注点:不同浏览器、不同版本之间的兼容性问题
+	c.c/s架构软件
+		c:客户端
+			PC端      电脑
+			移动端    手机  平板  智能终端
+		s:服务器
+			性能特别牛逼的电脑
+		测试关注点:不同类型操作系统、不同版本的安装和反安装(软件捆绑)和兼容性问题
+2.b/s架构后端组成
+	a.前端
+		html   标记性语言  静态页面(服务器上和网页上一致) html5
+		js     javascript  动态页面(交互)
+			   			   jquery框架
+			   java        后端编程语言
+			   jsp         java server page
+		css    页面美化    
+		ui     用户接口(美工)
+	b.后端
+		开发语言： java php python ruby perl 
+		操作系统
+			unix
+			linux
+			windows
+		web服务器
+			apache
+			nginx
+			tomcat
+			iis
+		数据库服务器
+			mysql
+			oracle
+			sqlserver
+	c.常见搭配
+		操作系统       web服务器      数据库服务器
+		win            apache        mysql
+		                iis          sqlserver
+		               tomcat        mysql/oracle
+		linux 			apache       mysql
+						tomcat       mysql/oracle
+						nginx        mysql
+3.搭建ecshop网店项目
+	a.集成软件
+		xampp
+			x: 任意操作系统
+			a: apache
+			m: mysql
+			p: php
+			p: perl
+		wamp
+			w: windows
+		phpstudy
+	b.phpstudy简介
+		apache    apache的主文件夹
+			bin   存放命令
+			conf  存放配置文件
+			logs  存放日志
+		mysql     mysql的主文件夹
+			bin   存放命令
+			data  存放数据
+		WWW       项目存放文件夹
+	c.服务和端口的检查
+		apache
+			主服务：httpd
+			端口：80
+		mysql
+			主服务：mysqld
+			端口：3306
+		查看进程
+			打开命令提示符(win+r--cmd)
+				tasklist | find "httpd"  查看httpd相关的进程
+				tasklist  查看当前系统中所有进程
+				|         管道，前面的输出作为后面的输入
+				find      搜索
+		查看端口
+			打开命令提示符(win+r--cmd)
+				netstat -an | find "3306"
+				netstat -an   查看系统开放的所有端口
+		0.0.0.0 任意IP
+		127.0.0.1==localhost==电脑本机
+	d.安装部署ecshop网站
+		d1.启动mysqld服务
+		d2.启动apache服务
+		d3.下载ecshop压缩包解压
+		d4.解压后的文件夹传入WWW文件夹中
+		d5.浏览器中输入127.0.0.1/ecshop1按照提示进行访问
+			注意:
+			数据库主机：localhost
+			端口号    : 3306
+			用户名    : root
+			密码      : root
+			数据库名  ： test
+4.故障排查
+	a.WWW文件夹中是否有ecshop1文件夹
+	b.检查进程和端口
+	c.为了检查电脑中是否有应用占用端口(检测端口冲突)
+		停止phpstudy(apache、mysql是关闭)
+		查看系统中端口(80、3306)
+5.数据库基础
+	a.什么是数据库
+		存储数据的软件
+	b.常见数据库软件
+		关系型数据库
+			informix  IBM+HP  小机  军、政、运、银
+			db2       IBM     军、政、运、银   (3000w+6000w)X4
+			oracle    甲骨文   中大型
+			mysql     甲骨文   互联网公司
+			sqlserver 微软     传统
+		非关系型数据库
+			mongodb     大数据、爬虫  
+			redis       缓存、验证、消息队列
+			cassandra   facebook
+	c.mysql的管理员
+		root
+	d.mysql的基础命令
+		数据库分为数据库软件和数据库数据，常说的数据库是数据库数据
+		mysql数据库是由表组成
+		表是由数据组成
+		d1.mysql的登录
+			1>登录命令(命令提示符)
+				mysql
+					登录本地数据库
+				mysql -u root -p
+					管理员登录本地数据库
+				mysql -h 127.0.0.1 -u root -p
+					管理员登录IP为127.0.0.1的数据库
+			2>登录方式
+				进入到mysql的bin文件夹执行命令
+					d:
+					cd phpStudy\MySQL\bin
+				设置环境变量(重启生效)
+					计算机--属性--高级--环境变量--系统变量--PATH中添加mysql的bin文件夹的路径
+					;D:\phpStudy\MySQL\bin
+					确定--确定--确定
+		d2.基础命令
+			show databases;
+				查看当前有哪些数据库
+			select database();
+				查看当前数据库的名字
+			use test;
+				切换当前数据库为test
+			show tables;
+				查看当前数据库有哪些表
+			select * from ecs_goods\G
+				查看ecs_goods表中所有的数据
+	e.表(表格)
+		e1.数据类型
+			数字   123   456   int
+			字符   '123' 'abc' char varchar
+			日期   '1988-01-01' date
+			char varchar区别：
+			char(10)     定长   
+			varchar(10)  变长   
+		e2.表结构的创建
+			语法:
+			create table 表 (
+				列 数据类型，
+				列 数据类型,
+				。。。。
+				);
+			需求:创建商品表(goods),商品名称(name) 字符类型，售价(price) 数字类型，出厂日期(ddate) 日期类型
+			create table goods(
+				name char(20),
+				price int,
+				ddate date
+			);
+		e3.表结构查看
+			desc 表名;
+			需求:查看goods表表结构
+			desc goods;
+		e4.表结构的删除
+			语法:drop table 表名;
+			需求:删除goods表
+		e5.表结构的修改
+			增加列
+			需求:bank表中增加id列，数据类型数值型
+			alter table bank add id int;
+			修改列
+			需求:bank表中id列修改为字符类型，最多10个字符
+			alter table bank modify id char(10);
+			删除列
+			需求:删除bank表中的id列
+			alter table bank drop column id;
+	f.SQL的分类
+		SQL:结构化查询语言
+		DDL：数据库定义语言 	create 	alter 	drop	truncate
+		DML：数据库操作语言  insert  delete  update
+		DCL：数据库控制语言  grant revoke
+		DQL：数据库查询语言  seelct
+	g.数据的新增
+		字符类型数据、日期类型数据需要加单引号
+		数值类型数据直接使用
+		列的数据类型必须和值的数据类型一致，顺序一致
+		g1.向表中所有列新增数据
+			insert into 表 values(值1,值2.....)
+			需求:向韩国表中新增数据，泡菜名字(heygor),泡菜价格200，出厂日期 1990-01-01
+			insert into 韩国 values(1,'heygor',200,'1990-01-01');
+		g2.向表中指定列新增数据
+			insert into 表(列1,列2....) values(值1,值2....);
+			需求:向韩国表中新增数据，泡菜名字(gaga),id是2
+			insert into 韩国(name,id) values('gaga',2);
+	h.数据的修改
+		语法:update 表 set 列=值 where 条件;
+		如果不加where条件，默认修改的是列中所有数据
+		如果增加where条件，默认修改的是指定行的列的数据
+		需求:修改韩国表中所有商品价格为0
+		update 韩国  set 泡菜价格=0;
+		需求:修改韩国表中名字是gaga的价格为1000
+		update 韩国 set 泡菜价格=1000 where 泡菜名字='gaga';
+	i.数据的删除(删除数据，表结构还在)
+		delete     可以删除指定数据，数据删除后可以找回
+		truncate   只能删除全表数据，删除数据无法找回
+		i1.delete
+		语法:delete from 表 where 条件
+		需求:删除韩国表中名字叫heygor的数据
+		delete from 韩国 where 泡菜名字='heygor';
+		需求:删除韩国表中所有数据
+		delete from 韩国;
+		i2.truncate(截断表)
+		语法:truncate table 表;
+		需求:删除韩国表中所有数据
+		truncate table 韩国;
+6.数据的查询
+	a.查询的分类
+		简单查询
+		多表查询
+		分组查询
+		子查询
+	b.简单查询(单张表)
+		http://www.ecshop119.com/ecshopjc-853.html
+		简单查询语法:select 列 from 表 where 条件;
+		select后面from前是和列相关的信息，where条件是和行相关的信息
+		查询所有信息
+		需求:查询ecs_goods表中所有信息
+		*   代表所有列
+		select * from ecs_goods;
+		查询指定行信息
+		需求:查询ecs_goods表中商品名称是KD876的所有信息
+		select * from ecs_goods where goods_name='KD876';
+		查询指定列信息
+		需求:查询ecs_goods表中所有商品的名字
+		select goods_name from ecs_goods;
+		查询指定行的列信息
+		需求:查询ecs_goods表中商品名称是KD876的本店售价
+		select shop_price from ecs_goods where goods_name='KD876';
+	c.where条件
+		c1.比较
+			>
+			<
+			=
+			>=
+			<=
+			!=
+			<>
+			需求:查询ecs_goods表中本店售价高于1000的所有商品信息
+				select * from ecs_goods where shop_price > 1000;
+			需求:查询ecs_goods表中商品名称不是KD876的所有信息
+				select * from ecs_goods where goods_name <> 'KD876';
+				select * from ecs_goods where goods_name != 'KD876';
+		c2.关系
+			and   同时满足
+			or    满足一个条件即可
+			not   不满足条件
+			需求:查询ecs_goods表中商品本店售价高于1000并且低于2000的商品的名称
+				select goods_name from ecs_goods where shop_price>1000 and shop_price<2000;
+			需求:查询ecs_goods表中商品名称是KD876或者诺基亚的所有信息
+				select * from ecs_goods where goods_name='KD876' or goods_name='诺基亚';
+		c3.区间
+			between...and...
+			小在前，大在后，包含两个端点
+			需求：查询ecs_goods表中本店售价范围在399和1999之间的所有信息
+				select * from ecs_goods where shop_price between 399 and 1999;
+				select * from ecs_goods where shop_price>=399 and shop_price<=1999;
+				
+
+
+
